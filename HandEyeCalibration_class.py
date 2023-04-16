@@ -59,6 +59,9 @@ class CameraCalibration:
         self.R_vecEE2Base = [cv2.Rodrigues(R)[0] for R in self.REE2Base]
         self.tEE2Base = [T[:3, 3] for T in self.TEE2Base]
 
+        #Create folder to save final transforms
+        if not os.path.exists("FinalTransforms"):
+            os.mkdir("FinalTransforms")
         #solve hand-eye calibration
         for i in range(0, 5):
             print("Method:", i)
@@ -77,10 +80,11 @@ class CameraCalibration:
             #Create 4x4 transfromation matrix
             self.T_cam2gripper = np.concatenate((self.R_cam2gripper, self.t_cam2gripper), axis=1)
             self.T_cam2gripper = np.concatenate((self.T_cam2gripper, np.array([[0, 0, 0, 1]])), axis=0)
-            np.savez(f"T_cam2gripper_Method_{i}.npz", self.T_cam2gripper)
+            #Save results in folder FinalTransforms
+            np.savez(f"FinalTransforms/T_cam2gripper_Method_{i}.npz", self.T_cam2gripper)
             #Save the inverse transfrom too
             self.T_gripper2cam = np.linalg.inv(self.T_cam2gripper)
-            np.savez(f"T_gripper2cam_Method_{i}.npz", self.T_gripper2cam)
+            np.savez(f"FinalTransforms/T_gripper2cam_Method_{i}.npz", self.T_gripper2cam)
 
         #solve hand-eye calibration using calibrateRobotWorldHandEye
         for i in range(0,2):
@@ -92,11 +96,11 @@ class CameraCalibration:
             #Create 4x4 transfromation matrix T_gripper2cam
             self.T_gripper2cam = np.concatenate((self.R_gripper2cam, self.t_gripper2cam), axis=1)
             self.T_gripper2cam = np.concatenate((self.T_gripper2cam, np.array([[0, 0, 0, 1]])), axis=0)
-            #Save results
-            np.savez(f"T_cam2gripper_Method_{i+4}.npz", self.T_gripper2cam)
+            #Save results in folder FinalTransforms
+            np.savez(f"FinalTransforms/T_gripper2cam_Method_{i+4}.npz", self.T_gripper2cam)
             #save inverse too
             self.T_cam2gripper = np.linalg.inv(self.T_gripper2cam)
-            np.savez(f"T_gripper2cam_Method_{i+4}.npz", self.T_cam2gripper)
+            np.savez(f"FinalTransforms/T_cam2gripper_Method_{i+4}.npz", self.T_cam2gripper)
 
     def find_chessboard_corners(self, images, pattern_size, ShowCorners=False):
         """Finds the chessboard patterns and, if ShowImage is True, shows the images with the corners"""

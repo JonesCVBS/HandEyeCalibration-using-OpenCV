@@ -2,6 +2,8 @@
 
 This code is an openCV implementation for Handeye calibration. The implementation is done using this flowchart:
 
+<img src="ReadMe_Images/HandEyeCalibrationFlowChart.png" alt="Flowchart of implementation" style="max-height:10%; width:auto;"/>
+
 
 To use this code is contained in HandEyeCalibration_class.py
 

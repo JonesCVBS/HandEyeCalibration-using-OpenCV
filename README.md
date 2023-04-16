@@ -23,3 +23,22 @@ The class will also output the images with the detected corners for verification
 
 
 An example is included in the folder Cal2 and within the HandEyeCalibration_class.py
+
+## Installation
+
+1. Clone this repository:
+```bash
+git clone https://github.com/your-username/your-repository.git
+```
+
+2.Change directory to the cloned repository:
+
+```bash
+cd your-repository
+```
+
+3.Install the required dependencies using the requirements.txt file:
+
+```bash
+pip install -r requirements.txt
+```

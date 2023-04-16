@@ -23,7 +23,7 @@ class CameraCalibration:
         self.square_size = square_size
 
         #load images and joint positions
-        self.image_files = sorted(glob.glob(f'{image_folder}/color_image*.png'))
+        self.image_files = sorted(glob.glob(f'{image_folder}/*.png'))
         self.transform_files = sorted(glob.glob(f'{Transforms_folder}/*.npz'))
         self.images = [cv2.imread(f) for f in self.image_files]
         self.images = [cv2.cvtColor(img, cv2.COLOR_RGB2BGR) for img in self.images]

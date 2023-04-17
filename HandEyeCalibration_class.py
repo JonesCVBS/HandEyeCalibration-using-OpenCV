@@ -16,7 +16,7 @@ class CameraCalibration:
     ShowCorners: if True, it will show the chessboard corners for each image, default is False
 
     """
-    def __init__(self, image_folder, Transforms_folder, pattern_size=(4, 7), square_size=33/1000, ShowProjectError=False, ShowCorners=False):
+    def __init__(self, image_folder, Transforms_folder, pattern_size=(4, 7), square_size=35/1000, ShowProjectError=False, ShowCorners=False):
 
         #Initiate parameters
         self.pattern_size = pattern_size
@@ -66,10 +66,10 @@ class CameraCalibration:
         for i in range(0, 5):
             print("Method:", i)
             self.R_cam2gripper, self.t_cam2gripper = cv2.calibrateHandEye(
-                self.R_vecEE2Base,
-                self.tEE2Base,
                 self.R_cam2target,
                 self.T_cam2target,
+                self.R_vecEE2Base,
+                self.tEE2Base,
                 method=i
             )
 

@@ -16,7 +16,7 @@ class CameraCalibration:
     ShowCorners: if True, it will show the chessboard corners for each image, default is False
 
     """
-    def __init__(self, image_folder, Transforms_folder, pattern_size=(4, 7), square_size=35/1000, ShowProjectError=False, ShowCorners=False):
+    def __init__(self, image_folder, Transforms_folder, pattern_size=(4, 7), square_size=33/1000, ShowProjectError=False, ShowCorners=False):
 
         #Initiate parameters
         self.pattern_size = pattern_size

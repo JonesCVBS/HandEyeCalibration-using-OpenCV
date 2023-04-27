@@ -31,7 +31,7 @@ An example is included in the folder Cal2 and within the HandEyeCalibration_clas
 
 1. Clone this repository:
 ```bash
-git clone https://github.com/your-username/your-repository.git
+git clone https://github.com/JonesCVBS/HandEyeCalibration-using-OpenCV.git
 ```
 
 2.Change directory to the cloned repository:

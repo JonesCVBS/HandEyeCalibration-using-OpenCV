@@ -37,7 +37,7 @@ git clone https://github.com/JonesCVBS/HandEyeCalibration-using-OpenCV.git
 2.Change directory to the cloned repository:
 
 ```bash
-cd your-repository
+cd HandEyeCalibration-using-OpenCV
 ```
 
 3.Install the required dependencies using the requirements.txt file:

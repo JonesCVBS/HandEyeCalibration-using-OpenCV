@@ -27,13 +27,17 @@ class CameraCalibration:
         self.transform_files = sorted(glob.glob(f'{Transforms_folder}/*.npz'))
         self.images = [cv2.imread(f) for f in self.image_files]
         self.images = [cv2.cvtColor(img, cv2.COLOR_RGB2BGR) for img in self.images]
-        self.T_base2EE_list = [np.load(f)['arr_0'] for f in self.transform_files]
+        self.All_T_base2EE_list = [np.load(f)['arr_0'] for f in self.transform_files]
 
         #find chessboard corners and index of images with chessboard corners
         self.chessboard_corners, self.IndexWithImg = self.find_chessboard_corners(self.images, self.pattern_size, ShowCorners=ShowCorners)
         self.intrinsic_matrix = self.calculate_intrinsics(self.chessboard_corners, self.IndexWithImg,
                                                            self.pattern_size, self.square_size,
                                                            self.images[0].shape[:2], ShowProjectError = ShowProjectError)
+
+        #Remove transforms were corners weren't detected
+        self.T_base2EE_list = [self.All_T_base2EE_list[i] for i in self.IndexWithImg]
+
         #save intrinsic matrix
         np.savez("IntrinsicMatrix.npz", self.intrinsic_matrix)
         #Calculate camera extrinsics

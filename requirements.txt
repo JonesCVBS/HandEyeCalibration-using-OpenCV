@@ -1,5 +1,16 @@
-# opencv-python must stay below 5.0: cv2.calibrateHandEye and
-# cv2.calibrateRobotWorldHandEye are absent from the OpenCV 5.x Python wheels.
-opencv-python>=4.5,<5
-numpy
+# Pinned, not just version-bounded: hand-eye calibration results on this
+# dataset turned out to be numerically sensitive to the exact OpenCV build
+# (checkerboard corner detection differs enough between 4.x releases to
+# swing the reprojection error by 2-3x). 4.7.0.72 is the version this was
+# actually tested against.
+#
+# numpy must stay below 2.0: opencv-python 4.7.0.72 was compiled against
+# numpy's 1.x ABI and fails to import under numpy 2.x
+# (AttributeError: _ARRAY_API not found).
+#
+# cv2.calibrateHandEye / cv2.calibrateRobotWorldHandEye are also absent
+# from the OpenCV 5.x Python wheels entirely, which is the other reason
+# to stay well clear of 5.0.
+opencv-python==4.7.0.72
+numpy<2
 matplotlib

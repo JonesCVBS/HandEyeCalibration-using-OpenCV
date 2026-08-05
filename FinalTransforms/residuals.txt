@@ -1,0 +1,11 @@
+Method      rotation std (deg)    translation std (mm)  
+--------------------------------------------------------
+Method 0    1.7094                38.9552               
+Method 1    0.1405                3.9265                
+Method 2    0.1424                3.9270                
+Method 3    0.1418                3.9703                
+Method 4    0.1420                3.9345                
+Method 5    0.1424                3.8909                
+Method 6    0.1406                4.4192                
+
+Most consistent across the input poses: Method 5 (translation std 3.8909 mm)

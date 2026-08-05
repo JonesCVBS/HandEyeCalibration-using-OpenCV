@@ -10,6 +10,12 @@ files. That's now fixed, along with a couple of smaller accuracy issues and a
 requirements.txt that had picked up dependencies from an unrelated project. Details
 below.
 
+**Maintenance status**: I work in a completely different field these days and don't
+plan to keep this updated, so I probably won't be answering issues. That's not me
+being unfriendly - I'd just rather say so than leave people waiting on a reply that
+isn't coming. The code works and the example dataset is included; fork it and change
+whatever you need, no need to check with me first.
+
 **If you're upgrading**: this is a breaking change for methods 0-3. If your code
 reads `T_cam2gripper_Method_0.npz` through `T_cam2gripper_Method_3.npz`, what you
 were getting back was actually gripper2cam. Re-run the calibration, or swap in the
